@@ -1,0 +1,27 @@
+spring:
+  application:
+    name: shop-manager-service
+  profiles:
+    active:
+      - dev
+
+server:
+  port: 8091
+
+#dubbo配置
+dubbo:
+  registries:
+    protocol: zookeeper
+    address: 127.0.0.1:2181
+  config-center:
+    timeout: 100000
+  protocol:
+    name: dubbo
+    port: 27401
+    telnet: help
+    payload: 104857600
+  provider:
+    timeout: 100000
+    consumer:
+      timeout: 100000
+      check: false
