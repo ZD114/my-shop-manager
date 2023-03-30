@@ -4,6 +4,15 @@ spring:
   profiles:
     active:
       - dev
+  reids:
+    host: localhost
+    port: 6379
+    timeout: 1000
+    jedis:
+      pool:
+        min-idle: 5
+        max-idle: 10
+        max-wait: -1
 
 server:
   port: 8091
