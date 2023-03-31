@@ -1,6 +1,6 @@
 spring:
   application:
-    name: shop-manager-service
+    name: shop-manager-web
   profiles:
     active:
       - dev
@@ -15,22 +15,15 @@ spring:
         max-wait: -1
 
 server:
-  port: 8091
+  port: 8092
 
 #dubbo配置
 dubbo:
   registries:
     protocol: zookeeper
     address: 127.0.0.1:2181
-  config-center:
+  consumer:
     timeout: 100000
-  protocol:
-    name: dubbo
-    port: 27401
-    telnet: help
-    payload: 104857600
-  provider:
-    timeout: 100000
-    consumer:
-      timeout: 100000
-      check: false
+    check: false
+  application:
+    name: ${spring.application.name}

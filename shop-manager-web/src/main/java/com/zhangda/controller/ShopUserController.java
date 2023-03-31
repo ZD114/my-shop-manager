@@ -2,6 +2,7 @@ package com.zhangda.controller;
 
 import com.zhangda.common.PageResult;
 import com.zhangda.interfaces.ShopUserService;
+import com.zhangda.interfaces.common.CommonService;
 import com.zhangda.pojo.ShopUser;
 import com.zhangda.pojo.params.ShopUserParams;
 import org.apache.dubbo.common.utils.StringUtils;
@@ -22,6 +23,8 @@ public class ShopUserController {
 
     @DubboReference
     public ShopUserService shopUserService;
+    @DubboReference
+    public CommonService commonService;
 
     private static final Logger log = LoggerFactory.getLogger(ShopUserController.class);
 
@@ -45,6 +48,27 @@ public class ShopUserController {
 
         var sqlCount = new StringBuilder("SELECT COUNT(1) FROM( " + sql + " GROUP BY id ) eq");
 
-        return null;
+        var totalCount = commonService.countLine(sqlCount.toString(), params);
+
+        log.info("总数量：{}", totalCount);
+
+        if (totalCount > 0) {
+
+            var start = searchParam.getPageIndex() == 0 ? 0
+                    : (searchParam.getPageIndex() - 1) * searchParam.getPageSize();
+
+            sql.append(" GROUP BY id ORDER BY id DESC LIMIT :start,:pageSize ");
+            params.put("start", start);
+            params.put("pageSize", searchParam.getPageSize());
+
+            var resources = shopUserService.searchPageList(sql.toString(), params);
+
+            pageResult.setData(resources);
+        }
+
+        pageResult.setTotal(totalCount);
+        pageResult.setTotalPages((long) Math.ceil(totalCount / (double) searchParam.getPageSize()));
+
+        return Flux.just(pageResult);
     }
 }

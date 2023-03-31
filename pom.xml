@@ -64,7 +64,7 @@
 
     <modules>
         <module>shop-manager-pojo</module>
-        <module>shop-manager-dao</module>
+        <module>shop-manager-interface</module>
         <module>shop-manager-service</module>
         <module>shop-manager-web</module>
     </modules>
