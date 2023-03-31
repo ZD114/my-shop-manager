@@ -12,11 +12,7 @@
     <artifactId>shop-manager-dao</artifactId>
 
     <dependencies>
-        <dependency>
-            <groupId>com.hlwl</groupId>
-            <artifactId>hlwl-manager-pojo</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
-        </dependency>
+
         <!-- MySql -->
         <dependency>
             <groupId>mysql</groupId>

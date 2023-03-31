@@ -1,0 +1,36 @@
+spring:
+  application:
+    name: shop-manager-service
+  profiles:
+    active:
+      - dev
+  reids:
+    host: localhost
+    port: 6379
+    timeout: 1000
+    jedis:
+      pool:
+        min-idle: 5
+        max-idle: 10
+        max-wait: -1
+
+server:
+  port: 8091
+
+#dubbo配置
+dubbo:
+  registries:
+    protocol: zookeeper
+    address: 127.0.0.1:2181
+  config-center:
+    timeout: 100000
+  protocol:
+    name: dubbo
+    port: 27401
+    telnet: help
+    payload: 104857600
+  provider:
+    timeout: 100000
+    consumer:
+      timeout: 100000
+      check: false
