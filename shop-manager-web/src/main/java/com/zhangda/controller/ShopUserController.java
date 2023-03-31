@@ -1,6 +1,7 @@
 package com.zhangda.controller;
 
 import com.zhangda.common.PageResult;
+import com.zhangda.interfaces.ShopUserService;
 import com.zhangda.pojo.ShopUser;
 import com.zhangda.pojo.params.ShopUserParams;
 import org.apache.dubbo.common.utils.StringUtils;
