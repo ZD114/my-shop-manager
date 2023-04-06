@@ -1,13 +1,13 @@
 package com.zhangda.service.impl;
 
-import com.zhangda.interfaces.ShopUserService;
+import com.zhangda.service.ShopUserService;
 import com.zhangda.pojo.ShopUser;
 import org.apache.dubbo.config.annotation.DubboService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.stereotype.Service;
 
-import javax.annotation.Resource;
 import java.util.List;
 import java.util.Map;
 
@@ -19,7 +19,7 @@ import java.util.Map;
 @DubboService
 public class ShopUserServiceImpl implements ShopUserService {
 
-    @Resource
+    @Autowired
     private NamedParameterJdbcTemplate nameJdbcTemplate;
 
     @Override

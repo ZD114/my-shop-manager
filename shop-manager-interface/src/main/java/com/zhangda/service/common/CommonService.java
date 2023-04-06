@@ -1,4 +1,4 @@
-package com.zhangda.interfaces.common;
+package com.zhangda.service.common;
 
 import java.util.Map;
 

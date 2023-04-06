@@ -1,11 +1,11 @@
 package com.zhangda.service.impl.common;
 
-import com.zhangda.interfaces.common.CommonService;
+import com.zhangda.service.common.CommonService;
 import org.apache.dubbo.config.annotation.DubboService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.stereotype.Service;
 
-import javax.annotation.Resource;
 import java.util.Map;
 
 /**
@@ -16,7 +16,7 @@ import java.util.Map;
 @DubboService
 public class CommonServiceImpl implements CommonService {
 
-    @Resource
+    @Autowired
     private NamedParameterJdbcTemplate nameJdbcTemplate;
 
     @Override

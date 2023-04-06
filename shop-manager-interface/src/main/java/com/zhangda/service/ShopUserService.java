@@ -1,4 +1,4 @@
-package com.zhangda.interfaces;
+package com.zhangda.service;
 
 import com.zhangda.pojo.ShopUser;
 

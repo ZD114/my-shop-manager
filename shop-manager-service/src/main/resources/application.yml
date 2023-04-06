@@ -4,6 +4,27 @@ spring:
   profiles:
     active:
       - dev
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+  datasource:
+    type: com.zaxxer.hikari.HikariDataSource
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    hikari:
+      connection-timeout: 60000
+      validation-timeout: 3000
+      idle-timeout: 60000
+      login-timeout: 5
+      max-lifetime: 60000
+      data-source-properties:
+        cachePrepStmts: true
+        prepStmtCacheSize: 500
+        prepStmtCacheSqlLimit: 2048
+        useServerPrepStmts: true
+        rewriteBatchedStatements: true
+        cacheResultSetMetadata: true
+        cacheServerConfiguration: true
+        elideSetAutoCommits: true
+        maintainTimeStats: false
   reids:
     host: localhost
     port: 6379
@@ -16,21 +37,57 @@ spring:
 
 server:
   port: 8091
+  http2:
+    enabled: true
+  compression:
+    enabled: true
+    mime-types: application/json,application/xml,text/html,text/javascript,text/css,text/xml,text/plain
+    min-response-size: 2048
+  forward-headers-strategy: native
+  tomcat:
+    remoteip:
+      remote-ip-header: X-Real-IP
+      protocol-header: X-Forwarded-Proto
+    relaxed-query-chars:
+    - '<'
+    - '>'
+    - '['
+    - ']'
+    - '\'
+    - '^'
+    - '`'
+    - '{'
+    - '}'
+    - '|'
+    relaxed-path-chars:
+    - '<'
+    - '>'
+    - '['
+    - ']'
+    - '\'
+    - '^'
+    - '`'
+    - '{'
+    - '}'
+    - '|'
 
 #dubbo配置
 dubbo:
-  registries:
+  application:
+    name: ${spring.application.name}
+  registry:
     protocol: zookeeper
     address: 127.0.0.1:2181
   config-center:
     timeout: 100000
   protocol:
     name: dubbo
-    port: 27401
+    port: 27524
     telnet: help
     payload: 104857600
   provider:
     timeout: 100000
-    consumer:
-      timeout: 100000
-      check: false
+  consumer:
+    timeout: 100000
+    check: false
+

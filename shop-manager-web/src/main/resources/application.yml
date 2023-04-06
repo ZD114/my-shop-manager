@@ -1,6 +1,9 @@
 spring:
   application:
     name: shop-manager-web
+  main:
+    allow-bean-definition-overriding: true
+    allow-circular-references: true
   profiles:
     active:
       - dev
@@ -16,10 +19,43 @@ spring:
 
 server:
   port: 8092
+  http2:
+    enabled: true
+  compression:
+    enabled: true
+    mime-types: application/json,application/xml,text/html,text/javascript,text/css,text/xml,text/plain
+    min-response-size: 2048
+  forward-headers-strategy: native
+  tomcat:
+    remoteip:
+      remote-ip-header: X-Real-IP
+      protocol-header: X-Forwarded-Proto
+    relaxed-query-chars:
+    - '<'
+    - '>'
+    - '['
+    - ']'
+    - '\'
+    - '^'
+    - '`'
+    - '{'
+    - '}'
+    - '|'
+    relaxed-path-chars:
+    - '<'
+    - '>'
+    - '['
+    - ']'
+    - '\'
+    - '^'
+    - '`'
+    - '{'
+    - '}'
+    - '|'
 
 #dubbo配置
 dubbo:
-  registries:
+  registry:
     protocol: zookeeper
     address: 127.0.0.1:2181
   consumer:
