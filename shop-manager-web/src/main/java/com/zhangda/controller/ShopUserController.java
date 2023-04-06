@@ -1,6 +1,7 @@
 package com.zhangda.controller;
 
 import com.zhangda.common.PageResult;
+import com.zhangda.common.Result;
 import com.zhangda.service.ShopUserService;
 import com.zhangda.service.common.CommonService;
 import com.zhangda.pojo.ShopUser;
@@ -11,9 +12,13 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.*;
 import reactor.core.publisher.Flux;
+import reactor.core.publisher.Mono;
+
 import java.util.HashMap;
 
 /**
+ * 用户控制类
+ *
  * @author zhangda
  * @date: 2023/3/31
  **/
@@ -70,5 +75,10 @@ public class ShopUserController {
         pageResult.setTotalPages((long) Math.ceil(totalCount / (double) searchParam.getPageSize()));
 
         return Flux.just(pageResult);
+    }
+
+    @PostMapping("")
+    public Mono<Result> addUser(@RequestBody ShopUser shopUser) {
+        return Mono.just(shopUserService.addUser(shopUser));
     }
 }

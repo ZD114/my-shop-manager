@@ -1,5 +1,6 @@
 package com.zhangda.service;
 
+import com.zhangda.common.Result;
 import com.zhangda.pojo.ShopUser;
 
 import java.util.List;
@@ -11,4 +12,6 @@ import java.util.Map;
  **/
 public interface ShopUserService {
     List<ShopUser> searchPageList(String sql, Map<String, Object> params);
+
+    Result addUser(ShopUser shopUser);
 }
