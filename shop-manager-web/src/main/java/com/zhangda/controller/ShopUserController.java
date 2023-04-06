@@ -33,6 +33,12 @@ public class ShopUserController {
 
     private static final Logger log = LoggerFactory.getLogger(ShopUserController.class);
 
+    /**
+     * 用户列表
+     *
+     * @param searchParam
+     * @return
+     */
     @PostMapping("/list")
     public Flux<PageResult<ShopUser>> list(@RequestBody ShopUserParams searchParam) {
         var pageResult = new PageResult<ShopUser>();
@@ -77,8 +83,19 @@ public class ShopUserController {
         return Flux.just(pageResult);
     }
 
+    /**
+     * 保存用信息
+     *
+     * @param shopUser
+     * @return
+     */
     @PostMapping("")
     public Mono<Result> addUser(@RequestBody ShopUser shopUser) {
         return Mono.just(shopUserService.addUser(shopUser));
+    }
+
+    @DeleteMapping("/{id}")
+    public Mono<Result> delUser(@PathVariable Long id) {
+        return Mono.just(shopUserService.delUser(id));
     }
 }

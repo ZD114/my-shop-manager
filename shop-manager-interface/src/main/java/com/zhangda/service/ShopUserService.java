@@ -14,4 +14,6 @@ public interface ShopUserService {
     List<ShopUser> searchPageList(String sql, Map<String, Object> params);
 
     Result addUser(ShopUser shopUser);
+
+    Result delUser(Long id);
 }

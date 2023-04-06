@@ -6,7 +6,6 @@ import com.zhangda.service.ShopUserService;
 import com.zhangda.pojo.ShopUser;
 import com.zhangda.service.utils.JdbcUtility;
 import org.apache.dubbo.config.annotation.DubboService;
-import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
@@ -14,6 +13,7 @@ import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -47,5 +47,16 @@ public class ShopUserServiceImpl implements ShopUserService {
         shopUser.setId(keyHolder.getKey().longValue());
 
         return Result.ok().data(Constant.RESULT, shopUser);
+    }
+
+    @Override
+    public Result delUser(Long id) {
+        var param = new HashMap<String, Object>();
+
+        param.put("id", id);
+
+        nameJdbcTemplate.update("delete from shop_user where id = :id", param);
+
+        return Result.ok();
     }
 }
