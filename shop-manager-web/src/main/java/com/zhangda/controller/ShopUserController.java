@@ -2,6 +2,7 @@ package com.zhangda.controller;
 
 import com.zhangda.common.PageResult;
 import com.zhangda.common.Result;
+import com.zhangda.pojo.model.ShopUserInfoRepository;
 import com.zhangda.service.ShopUserService;
 import com.zhangda.service.common.CommonService;
 import com.zhangda.pojo.ShopUser;
@@ -90,12 +91,40 @@ public class ShopUserController {
      * @return
      */
     @PostMapping("")
-    public Mono<Result> addUser(@RequestBody ShopUser shopUser) {
+    public Mono<Result> addUser(@RequestBody ShopUserInfoRepository shopUser) {
         return Mono.just(shopUserService.addUser(shopUser));
     }
 
+    /**
+     * 删除用户
+     *
+     * @param id
+     * @return
+     */
     @DeleteMapping("/{id}")
     public Mono<Result> delUser(@PathVariable Long id) {
         return Mono.just(shopUserService.delUser(id));
+    }
+
+    /**
+     * 查询用户详情
+     *
+     * @param id
+     * @return
+     */
+    @GetMapping("/{id}")
+    public Mono<Result> queryUserInfo(@PathVariable Long id) {
+        return Mono.just(shopUserService.queryUserInfo(id));
+    }
+
+    /**
+     * 更新用户信息
+     *
+     * @param repository
+     * @return
+     */
+    @PutMapping("")
+    public Mono<Result> updateUser(@RequestBody ShopUserInfoRepository repository) {
+        return Mono.just(shopUserService.updateUser(repository));
     }
 }
