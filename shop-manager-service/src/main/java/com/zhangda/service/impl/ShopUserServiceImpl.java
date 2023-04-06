@@ -99,6 +99,18 @@ public class ShopUserServiceImpl implements ShopUserService {
 
     @Override
     public Result updateUser(ShopUserInfoRepository repository) {
-        return null;
+        var user = new ShopUser();
+        var userInfo = new ShopUserInfo();
+
+        BeanUtils.copyProperties(repository, user, "id");
+        BeanUtils.copyProperties(repository, userInfo);
+
+        user.setId(repository.getUserId());
+        user.setUpdateTime(LocalDateTime.now());
+
+        nameJdbcTemplate.update(JdbcUtility.getUpdateSql(user), JdbcUtility.getSqlParameterSource(user));
+        nameJdbcTemplate.update(JdbcUtility.getUpdateSql(userInfo), JdbcUtility.getSqlParameterSource(userInfo));
+
+        return Result.ok().data(Constant.RESULT, repository);
     }
 }
