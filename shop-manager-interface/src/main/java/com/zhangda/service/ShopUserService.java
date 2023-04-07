@@ -21,4 +21,7 @@ public interface ShopUserService {
     Result queryUserInfo(Long id);
 
     Result updateUser(ShopUserInfoRepository repository);
+
+    List<ShopUserInfoRepository> querySelect(List<Long> ids);
+
 }

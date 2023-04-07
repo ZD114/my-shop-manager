@@ -1,5 +1,6 @@
 package com.zhangda.controller;
 
+import com.zhangda.common.Constant;
 import com.zhangda.common.PageResult;
 import com.zhangda.common.Result;
 import com.zhangda.pojo.model.ShopUserInfoRepository;
@@ -7,15 +8,16 @@ import com.zhangda.service.ShopUserService;
 import com.zhangda.service.common.CommonService;
 import com.zhangda.pojo.ShopUser;
 import com.zhangda.pojo.params.ShopUserParams;
+import com.zhangda.utils.EasyExcelUtil;
 import org.apache.dubbo.common.utils.StringUtils;
 import org.apache.dubbo.config.annotation.DubboReference;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.*;
-import reactor.core.publisher.Flux;
-import reactor.core.publisher.Mono;
 
+import javax.servlet.http.HttpServletResponse;
 import java.util.HashMap;
+import java.util.List;
 
 /**
  * 用户控制类
@@ -41,7 +43,7 @@ public class ShopUserController {
      * @return
      */
     @PostMapping("/list")
-    public Flux<PageResult<ShopUser>> list(@RequestBody ShopUserParams searchParam) {
+    public PageResult<ShopUser> list(@RequestBody ShopUserParams searchParam) {
         var pageResult = new PageResult<ShopUser>();
         var params = new HashMap<String, Object>();
         var sql = new StringBuilder("SELECT * FROM shop_user WHERE 1=1 ");
@@ -81,7 +83,7 @@ public class ShopUserController {
         pageResult.setTotal(totalCount);
         pageResult.setTotalPages((long) Math.ceil(totalCount / (double) searchParam.getPageSize()));
 
-        return Flux.just(pageResult);
+        return pageResult;
     }
 
     /**
@@ -91,8 +93,8 @@ public class ShopUserController {
      * @return
      */
     @PostMapping("")
-    public Mono<Result> addUser(@RequestBody ShopUserInfoRepository shopUser) {
-        return Mono.just(shopUserService.addUser(shopUser));
+    public Result addUser(@RequestBody ShopUserInfoRepository shopUser) {
+        return shopUserService.addUser(shopUser);
     }
 
     /**
@@ -102,8 +104,8 @@ public class ShopUserController {
      * @return
      */
     @DeleteMapping("/{id}")
-    public Mono<Result> delUser(@PathVariable Long id) {
-        return Mono.just(shopUserService.delUser(id));
+    public Result delUser(@PathVariable Long id) {
+        return shopUserService.delUser(id);
     }
 
     /**
@@ -113,8 +115,8 @@ public class ShopUserController {
      * @return
      */
     @GetMapping("/{id}")
-    public Mono<Result> queryUserInfo(@PathVariable Long id) {
-        return Mono.just(shopUserService.queryUserInfo(id));
+    public Result queryUserInfo(@PathVariable Long id) {
+        return shopUserService.queryUserInfo(id);
     }
 
     /**
@@ -124,7 +126,18 @@ public class ShopUserController {
      * @return
      */
     @PutMapping("")
-    public Mono<Result> updateUser(@RequestBody ShopUserInfoRepository repository) {
-        return Mono.just(shopUserService.updateUser(repository));
+    public Result updateUser(@RequestBody ShopUserInfoRepository repository) {
+        return shopUserService.updateUser(repository);
     }
+
+    /**
+     * 下载excel
+     *
+     * @param response
+     */
+    @PostMapping("/download")
+    public void downloadExcel(@RequestBody List<Long> ids, HttpServletResponse response) {
+        EasyExcelUtil.downloadExcel(response, Constant.SHOP_USER, shopUserService.querySelect(ids), ShopUserInfoRepository.class);
+    }
+
 }

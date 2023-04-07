@@ -14,5 +14,7 @@ public class Constant {
     public static final String ERROR = "error"; //返回失败标志
     public static final String RESULT = "result";
     public static final String ID = "id"; //编号
+    public static final String SHOP_USER = "shopUser";
+    public static final String UTF8 = "utf-8";
 
 }

@@ -19,6 +19,8 @@ public enum ResultCodeEnum {
 
     ERROR(false, 500, "后台其他异常"),
 
+    ERROR_EXCEL(false, 40001,"请上传Excel文件！"),
+
     UNKNOWN_REASON(false, 20001, "未知错误"),
 
     BAD_SQL_GRAMMAR(false, 21001, "sql语法错误"),

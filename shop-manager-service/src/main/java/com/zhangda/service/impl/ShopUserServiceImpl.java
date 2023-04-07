@@ -113,4 +113,16 @@ public class ShopUserServiceImpl implements ShopUserService {
 
         return Result.ok().data(Constant.RESULT, repository);
     }
+
+    @Override
+    public List<ShopUserInfoRepository> querySelect(List<Long> ids) {
+        var param = new HashMap<String, Object>();
+        param.put("ids", ids);
+
+        var sql = new StringBuilder("select a.username,a.password,a.nickname,a.is_admin,a.is_approve,a.is_freeze,b.* ");
+        sql.append("from shop_user a left join shop_user_info b on a.id = b.user_id ");
+        sql.append("a.id in (:ids) order by a.id desc");
+
+        return nameJdbcTemplate.query(sql.toString(), param, new BeanPropertyRowMapper<>(ShopUserInfoRepository.class));
+    }
 }
