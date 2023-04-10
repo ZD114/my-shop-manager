@@ -13,6 +13,8 @@ public enum ResultCodeEnum {
 
     DATA_SEARCH_ERROR(false, 400, "前端系统参数查找出现错误"),
 
+    MSN_ERROR(false,400,"验证码输入错误"),
+
     ILLEGAL_STATUS_ERROR(false, 500, "当前需求单状态出现错误"),
 
     DATA_PROCESS_ERROR(false, 500, "后台数据处理出现错误"),

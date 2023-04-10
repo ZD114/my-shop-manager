@@ -29,6 +29,10 @@ public class UserLoginController {
             return Result.error(ResultCodeEnum.DATA_SEARCH_ERROR);
         }
 
+        if (!validate.equals(user.getMsn())) {
+            return Result.error(ResultCodeEnum.MSN_ERROR);
+        }
+
         // 1.得到Subject
         var subject = SecurityUtils.getSubject();
 

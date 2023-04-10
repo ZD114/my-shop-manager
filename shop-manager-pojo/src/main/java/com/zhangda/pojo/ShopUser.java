@@ -18,6 +18,8 @@ public class ShopUser implements Serializable {
 
     private String nickname;
 
+    private String msn;
+
     private Integer isAdmin;
 
     private Integer isDelete;
@@ -108,5 +110,13 @@ public class ShopUser implements Serializable {
 
     public void setUpdateTime(LocalDateTime updateTime) {
         this.updateTime = updateTime;
+    }
+
+    public String getMsn() {
+        return msn;
+    }
+
+    public void setMsn(String msn) {
+        this.msn = msn == null ? null : msn.trim();
     }
 }
