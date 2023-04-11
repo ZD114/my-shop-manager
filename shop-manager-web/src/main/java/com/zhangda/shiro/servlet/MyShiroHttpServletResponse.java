@@ -20,10 +20,11 @@ public class MyShiroHttpServletResponse extends ShiroHttpServletResponse {
         if ((url == null) || (sessionId == null))
             return (url);
 
-        String path = url;
-        String query = "";
-        String anchor = "";
-        int question = url.indexOf('?');
+        var path = url;
+        var query = "";
+        var anchor = "";
+        var question = url.indexOf('?');
+
         if (question >= 0) {
             path = url.substring(0, question);
             query = url.substring(question);
@@ -33,7 +34,7 @@ public class MyShiroHttpServletResponse extends ShiroHttpServletResponse {
             anchor = path.substring(pound);
             path = path.substring(0, pound);
         }
-        StringBuilder sb = new StringBuilder(path);
+        var sb = new StringBuilder(path);
 
         sb.append(anchor);
         sb.append(query);
