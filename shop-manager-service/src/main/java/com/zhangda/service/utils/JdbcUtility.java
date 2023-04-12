@@ -109,7 +109,7 @@ public class JdbcUtility {
         var beanWrapper = PropertyAccessorFactory.forBeanPropertyAccess(object);
         var props = beanWrapper.getPropertyDescriptors();
         var ignoreSet = null != ignoreProperties ? Arrays.asList(ignoreProperties).stream()
-                .filter(str -> !StringUtils.hasLength(str)).collect(Collectors.toSet()) : new HashSet<String>(0);
+                .filter(str -> StringUtils.hasLength(str)).collect(Collectors.toSet()) : new HashSet<String>(0);
         var names = new ArrayList<String>();
 
         for (var pd : props) {
