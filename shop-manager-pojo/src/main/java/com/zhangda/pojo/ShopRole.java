@@ -1,6 +1,7 @@
 package com.zhangda.pojo;
 
 import java.io.Serializable;
+import java.time.LocalDateTime;
 
 /**
  * 角色
@@ -18,6 +19,10 @@ public class ShopRole implements Serializable {
     private String roleCode;
 
     private String remarks;
+
+    private LocalDateTime createTime;
+
+    private LocalDateTime updateTime;
 
     public Long getId() {
         return id;
@@ -57,5 +62,21 @@ public class ShopRole implements Serializable {
 
     public void setRemarks(String remarks) {
         this.remarks = remarks;
+    }
+
+    public LocalDateTime getCreateTime() {
+        return createTime;
+    }
+
+    public void setCreateTime(LocalDateTime createTime) {
+        this.createTime = createTime;
+    }
+
+    public LocalDateTime getUpdateTime() {
+        return updateTime;
+    }
+
+    public void setUpdateTime(LocalDateTime updateTime) {
+        this.updateTime = updateTime;
     }
 }

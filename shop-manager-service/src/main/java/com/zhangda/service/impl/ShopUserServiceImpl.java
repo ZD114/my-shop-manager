@@ -125,4 +125,14 @@ public class ShopUserServiceImpl implements ShopUserService {
 
         return nameJdbcTemplate.query(sql.toString(), param, new BeanPropertyRowMapper<>(ShopUserInfoRepository.class));
     }
+
+    @Override
+    public Result findUserByName(String username) {
+        var param = new HashMap<String, Object>();
+        param.put("username", username);
+
+        var result = nameJdbcTemplate.query("select * from shop_user where username = :username and is_delete = 0", new BeanPropertyRowMapper<>(ShopUser.class));
+
+        return Result.ok().data(Constant.RESULT, result);
+    }
 }

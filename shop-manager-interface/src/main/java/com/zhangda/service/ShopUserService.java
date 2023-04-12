@@ -24,4 +24,6 @@ public interface ShopUserService {
 
     List<ShopUserInfoRepository> querySelect(List<Long> ids);
 
+    Result findUserByName(String username);
+
 }

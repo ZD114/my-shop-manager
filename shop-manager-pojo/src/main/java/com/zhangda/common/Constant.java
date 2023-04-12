@@ -16,5 +16,6 @@ public class Constant {
     public static final String ID = "id"; //编号
     public static final String SHOP_USER = "shopUser";
     public static final String UTF8 = "utf-8";
+    public static String CURRENT_USER_INFO = "_CURRENT_USER"; // 当前用户session name
 
 }
