@@ -5,6 +5,7 @@ import com.zhangda.service.ShopRoleService;
 import org.apache.dubbo.config.annotation.DubboReference;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
  * @date: 2023/4/10
  **/
 @RestController
+@RequestMapping("/role")
 public class ShopRoleController {
 
     @DubboReference
