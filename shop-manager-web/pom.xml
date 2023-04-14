@@ -59,6 +59,7 @@
             <groupId>org.apache.shiro</groupId>
             <artifactId>shiro-all</artifactId>
         </dependency>
+
     </dependencies>
 
     <build>

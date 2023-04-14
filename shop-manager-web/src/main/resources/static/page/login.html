@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>后台登录</title>
+    <link href="css/css.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<div id="bodybg">
+    <div id="bodybgbox">
+        <form action="login" name="Login" id="loginForm" method="post" onkeydown="keyLogin();">
+            <div id="formbox">
+                <div id="login_con">
+                    <div id="falseCode" style="color:red;font-weight:bold;margin-left:75px;"></div>
+                    <div class="formRow">
+                        <div class="login_con_left">用户名:</div>
+                        <div class="login_con_right">
+                            <input id="username" name="username" type="text" class="input_bg"/>
+                        </div>
+                    </div>
+                    <div class="formRow">
+                        <div class="login_con_left">密码:</div>
+                        <div class="login_con_right">
+                            <input id="password" name="password" type="password" class="input_bg"/>
+                        </div>
+                    </div>
+
+                    <div class="clear_both"></div>
+                    <div class="formRow">
+                        <div class="login_con_left">验证码:</div>
+                        <div class="login_con_right">
+                            <div id="code_input" style="display:inline-block;vertical-align:top;">
+                                <input id="msn" name="msn" maxlength="4" type="text" class="input_bg"
+                                       style="width:80px;">
+                            </div>
+                            <img id="imgObj2" src="verifyCode" class="log-yzm">
+                            <a href='#' id="changeImg2"><label>看不清？</label></a>
+
+                        </div>
+                    </div>
+                    <div class="formRow">
+                        <div class="login_con_left">&nbsp;</div>
+                        <div class="login_con_right">
+                            <div id="code_input">
+                                <button type="button" class="btn" id="submitbtn">登录</button>
+                            </div>
+                            <div id="code_img"></div>
+                        </div>
+                    </div>
+                    <div class="clear_both"></div>
+                </div>
+                <table class="tableBottom" border="0" cellspacing="0" cellpadding="0" align="center">
+                    <tr>
+                        <td align="center" valign="top">zhangda版权所有</td>
+                    </tr>
+                </table>
+            </div>
+        </form>
+    </div>
+</div>
+</body>
+
+<style>
+    html {
+        width: 100%;
+        height: 100%;
+        background: #9dcff7 url(../img/peizhixiu.jpeg) no-repeat top center;
+        width:100%;
+        height:100%;
+        background-size: cover;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+    }
+    #changeImg2 {
+        text-decoration: none;
+        color: #0066cc;
+    }
+    #changeImg2:hover {
+        color: red;
+        text-decoration: none;
+        cursor: pointer;
+    }
+    #changeImg2 label:hover {
+        cursor:pointer;
+    }
+    .btn {
+        width: 80px;
+    }
+    .btn:hover {
+        background: #fff;
+        cursor:pointer;
+    }
+</style>
+
+<script src="js/css3-mediaqueries.js"></script>
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<script type="text/javascript" src="js/common.js"></script>
+<script type="text/javascript" src="js/login.js"></script>
+
+<script type="text/javascript">
+    function getTopWinow(){
+
+        let p = window;
+        while(p != p.parent){
+            alert("登陆超时,请重新登陆！")
+            p = p.parent;
+            top.window.location.href="login";
+        }
+        return p;
+    }
+    let top = getTopWinow();
+
+</script>
+
+</html>

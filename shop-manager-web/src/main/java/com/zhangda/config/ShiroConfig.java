@@ -80,7 +80,7 @@ public class ShiroConfig {
         // 创建安全管理器
         shiroFilterFactoryBean.setSecurityManager(securityManager);
         shiroFilterFactoryBean.setLoginUrl("/login");
-        shiroFilterFactoryBean.setSuccessUrl("/product");
+        shiroFilterFactoryBean.setSuccessUrl("/");
 
         var filterMap = new LinkedHashMap<String, Filter>();
 

@@ -1,0 +1,36 @@
+body{
+	font-family:"microsoft yahei","ff-tisa-web-pro-1","ff-tisa-web-pro-2";
+	margin:0;
+	font-size:12px;
+	}
+*{padding:0px;margin:0px;}
+.clear_both{clear:both;}
+
+/*背景大图片随显示器的大小不同而平铺自适应。filter|-ms-filter属性设置IE浏览器下的cover不会随显示器大小背景图平铺的bug，同时需要注意的是这两个属性不能和绝对定位写在一起，不然在ie8浏览器以下文本框、按钮等会没有效果*/
+#bodybg{background-color:#9dcff7;background:url(../img/peizhixiu.jpeg) no-repeat top center; width:100%; height:100%;
+	background-size: cover;   -webkit-background-size: cover; -moz-background-size: cover;   -o-background-size: cover;
+}
+#bodybgbox{ position:relative;}
+/*设置宽高防止背景图片越来越小，而背景图上的dom元素对应不到相应的位置*/
+#loginForm{min-width:1400px;height:auto !important;min-height:768px; overflow:visible; margin: 0 auto;}
+#formbox{width: 1400px; margin: 0 auto;}
+/*padding-top: 285px\9 针对IE8做兼容处理*/
+#login_con{ padding-top: 330px; padding-top: 285px\9;width: 330px; float: right;margin-right: 360px; height: 318px;}
+.login_con_left{float: left; width: 65px; text-align: right; color: #7a7a7a;font-size: 13px; line-height: 30px; margin-right: 10px;}
+.login_con_right{float:left;width:240px;}
+.input_bg{height:29px;border:#b5b8c8 1px solid;line-height:29px;}
+.tableBottom{width: 1400px; margin: 15px auto auto;margin-top: -40px\9;float: left;}
+.tableBottom td{height:20px;line-height:20px;color:#10427a;}
+.tableBottom a{text-decoration: none;color:#10427a;}
+.btn{background-color:#cbe5fd; color:#70abe6;border:1px solid #9ecff9; width:75px; height:30px; border-radius: 5px;}
+.formRow{margin: 8px 0; float: left;}
+.login_con_right input{width:216px;}
+.mod_copyright_split {
+    margin: 0 10px;
+    color: #ccc;
+}
+
+@media (max-width: 1500px){
+    .tableBottom{margin-top:-20px;}
+	#login_con{ padding-top:290px;}
+}

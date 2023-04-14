@@ -16,9 +16,15 @@ spring:
         min-idle: 5
         max-idle: 10
         max-wait: -1
+  mvc:
+    view:
+      prefix: /**
+      suffix: .html
 
 server:
   port: 8092
+  servlet:
+    context-path: /admin
   http2:
     enabled: true
   compression:
