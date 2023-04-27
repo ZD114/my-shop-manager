@@ -24,6 +24,9 @@
         <curator.version>5.3.0</curator.version>
         <easyexcel.version>3.2.1</easyexcel.version>
         <shiro.version>1.11.0</shiro.version>
+        <mapper-spring-boot-starter.version>4.2.2</mapper-spring-boot-starter.version>
+        <mybatis.version>3.5.13</mybatis.version>
+        <pagehelper-spring-boot-starter.version>1.4.6</pagehelper-spring-boot-starter.version>
     </properties>
 
     <dependencyManagement>
@@ -81,6 +84,9 @@
         <module>shop-manager-interface</module>
         <module>shop-manager-service</module>
         <module>shop-manager-web</module>
+        <module>shop-code-generator</module>
+        <module>shop-goods-center</module>
+        <module>shop-common</module>
     </modules>
 
 </project>
