@@ -11,6 +11,7 @@
 
     <artifactId>shop-goods-center</artifactId>
     <packaging>pom</packaging>
+
     <modules>
         <module>shop-goods-dao</module>
         <module>shop-goods-model</module>

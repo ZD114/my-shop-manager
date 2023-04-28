@@ -27,10 +27,18 @@
         <mapper-spring-boot-starter.version>4.2.2</mapper-spring-boot-starter.version>
         <mybatis.version>3.5.13</mybatis.version>
         <pagehelper-spring-boot-starter.version>1.4.6</pagehelper-spring-boot-starter.version>
+        <fastjson.version>2.0.25</fastjson.version>
+        <persistence.version>2.2</persistence.version>
     </properties>
 
     <dependencyManagement>
         <dependencies>
+            <dependency>
+                <groupId>javax.persistence</groupId>
+                <artifactId>javax.persistence-api</artifactId>
+                <version>${persistence.version}</version>
+            </dependency>
+
             <!-- dubbo依赖-->
             <dependency>
                 <groupId>org.apache.dubbo</groupId>
@@ -76,6 +84,12 @@
                 <artifactId>shiro-all</artifactId>
                 <version>${shiro.version}</version>
             </dependency>
+
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>fastjson</artifactId>
+                <version>${fastjson.version}</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 
@@ -89,4 +103,17 @@
         <module>shop-common</module>
     </modules>
 
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.1</version>
+                <configuration>
+                    <source>17</source>
+                    <target>17</target>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 </project>
