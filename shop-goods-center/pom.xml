@@ -19,4 +19,11 @@
         <module>shop-goods-service-client</module>
     </modules>
 
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter</artifactId>
+        </dependency>
+    </dependencies>
+
 </project>
