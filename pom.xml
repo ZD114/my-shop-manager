@@ -34,6 +34,9 @@
         <persistence.version>2.2</persistence.version>
         <elasticsearch-rest-client.version>8.7.0</elasticsearch-rest-client.version>
         <elasticsearch-java.version>8.7.0</elasticsearch-java.version>
+        <poi.version>5.1.0</poi.version>
+        <itexpdf.version>5.5.13.3</itexpdf.version>
+        <bouncycastle.version>1.70</bouncycastle.version>
     </properties>
 
     <dependencies>
@@ -134,6 +137,30 @@
                 <artifactId>fastjson</artifactId>
                 <version>${fastjson.version}</version>
             </dependency>
+
+            <!-- Apache POI 用于操作 Excel -->
+            <dependency>
+                <groupId>org.apache.poi</groupId>
+                <artifactId>poi</artifactId>
+                <version>${poi.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.poi</groupId>
+                <artifactId>poi-ooxml</artifactId>
+                <version>${poi.version}</version>
+            </dependency>
+            <!-- iText 用于生成 PDF 文件并盖章 -->
+            <dependency>
+                <groupId>com.itextpdf</groupId>
+                <artifactId>itextpdf</artifactId>
+                <version>${itexpdf.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.bouncycastle</groupId>
+                <artifactId>bcpkix-jdk15on</artifactId>
+                <version>${bouncycastle.version}</version>
+            </dependency>
+
         </dependencies>
     </dependencyManagement>
 
@@ -145,6 +172,7 @@
         <module>shop-code-generator</module>
         <module>shop-goods-center</module>
         <module>shop-common</module>
+        <module>shop-crm</module>
     </modules>
 
     <build>

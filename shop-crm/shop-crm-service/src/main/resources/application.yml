@@ -1,0 +1,10 @@
+spring:
+  application:
+    name: shop-crm-service
+  profiles:
+    active:
+      - dev
+server:
+  port: 9091
+  servlet:
+    context-path: /crm
